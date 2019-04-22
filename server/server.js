@@ -19,11 +19,23 @@ app.use(cors());
 const { User } = require("./models/user");
 
 // ==============================
+//           USERS
+// ==============================
 
-// USERS
+// Get all users Data
+app.get("/api/users/", (req, res) => {
+  const user = User.find((err, doc) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({
+      success: true,
+      userData: doc
+    });
+  });
+});
 
-// ===============================
-
+// Post User Data
 app.post("/api/users/register", (req, res) => {
   const user = new User(req.body);
   user.save((err, doc) => {
@@ -35,10 +47,6 @@ app.post("/api/users/register", (req, res) => {
       userData: doc
     });
   });
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
 });
 
 const PORT = process.env.PORT || 3002;
