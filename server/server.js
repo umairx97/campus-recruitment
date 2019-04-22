@@ -16,15 +16,17 @@ app.use(cookieParser());
 app.use(cors());
 
 // Models
-const { User } = require("./models/user");
+const { Admin } = require("./models/admin");
+const { Student } = require("./models/student");
+const { Company } = require("./models/company");
 
 // ==============================
-//           USERS
+//           STUDENTS
 // ==============================
 
 // Get all users Data
-app.get("/api/users/", (req, res) => {
-  const user = User.find((err, doc) => {
+app.get("/api/student/", (req, res) => {
+  const student = Student.find((err, doc) => {
     if (err) {
       return res.json({ success: false, err });
     }
@@ -35,10 +37,71 @@ app.get("/api/users/", (req, res) => {
   });
 });
 
-// Post User Data
-app.post("/api/users/register", (req, res) => {
-  const user = new User(req.body);
-  user.save((err, doc) => {
+// Post Student Data
+app.post("/api/student/register", (req, res) => {
+  const student = new Student(req.body);
+  student.save((err, doc) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({
+      success: true,
+      userData: doc
+    });
+  });
+});
+
+// ==============================
+//           ADMINS
+// ==============================
+
+app.get("/api/admin/", (req, res) => {
+  const admin = Admin.find((err, doc) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({
+      success: true,
+      userData: doc
+    });
+  });
+});
+
+// Post Admin Data
+app.post("/api/admin/register", (req, res) => {
+  const admin = new Admin(req.body);
+  admin.save((err, doc) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({
+      success: true,
+      userData: doc
+    });
+  });
+});
+
+// ==============================
+//           COMPANY
+// ==============================
+
+// Get company Details
+app.get("/api/company/", (req, res) => {
+  const company = Company.find((err, doc) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({
+      success: true,
+      userData: doc
+    });
+  });
+});
+
+// Post Company Details
+app.post("/api/company/register", (req, res) => {
+  const company = new Company(req.body);
+  company.save((err, doc) => {
     if (err) {
       return res.json({ success: false, err });
     }
