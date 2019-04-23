@@ -105,7 +105,25 @@ class Register extends React.Component {
         .catch(err => {
           console.log(err);
         });
-    }
+    } else if (role === "admin") {
+      axios
+        .post(`http://localhost:3002/api/admin/register`, {
+          name: username,
+          email: email,
+          password: password,
+          role: "admin",
+        })
+        .then(res => {
+          if (res.status === 200) {
+            alert("Thanks for registering you may now login");
+          } else {
+            alert("Something Wrong please try again later");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } 
   };
   handleSubmit = event => {
     if (this.isFormValid()) {
@@ -212,6 +230,15 @@ class Register extends React.Component {
                   checked={this.state.role === "company"}
                   onChange={this.handleRole}
                 />
+
+
+                <label>Admin</label>
+                <input
+                  type="radio"
+                  value="admin"
+                  checked={this.state.role === "admin"}
+                  onChange={this.handleRole}
+                />
               </Form.Group>
 
               <Button color="orange" fluid size="large">
@@ -226,7 +253,7 @@ class Register extends React.Component {
             </Message>
           )}
           <Message>
-            Already a user? <Link to="/login">Login</Link>
+            Already a user? <Link to="/">Login</Link>
           </Message>
         </Grid.Column>
       </Grid>

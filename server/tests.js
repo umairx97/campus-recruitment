@@ -63,8 +63,9 @@ const baseUrl = "http://localhost:3002";
 //   .post(`${baseUrl}/api/company/register`, {
 //     email: "axiom@axiom.com",
 //     password: "1234560",
-//     "Company Name": "Panacloud",
-//     role: "company"
+//     companyName: "Axiom",
+//     role: "company",
+//     ceo: "Sir Adil Altaf"
 //   })
 //   .then(res => console.log(res.data))
 //   .catch(err => console.log(err));
@@ -81,9 +82,11 @@ const baseUrl = "http://localhost:3002";
 // POST REQUEST FOR JOBS
 // axios
 //   .post(`${baseUrl}/api/company/jobs`, {
-//     title: "React Developer",
-//     description: "A job for react stack developer",
-//     "company name": "Panacloud",
+//     ceo: 'Umair',
+//     position: "React Developer",
+//     description: "A job for React Stack developer",
+//     companyName: "Panacloud",
+//     salary: 10000,
 //     date: "23/04/2019"
 //   })
 //   .then(res => console.log(res))

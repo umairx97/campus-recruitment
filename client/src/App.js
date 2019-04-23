@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Login from "./components/Auth/Login";
-import Student from "./components/Dashboard/Student";
-import Company from "./components/Dashboard/Company";
-import Admin from "./components/Dashboard/Admin";
+
+import StudentDashboard from "./components/Dashboard/Student/index";
+import CompanyDashboard from './components/Dashboard/Company/index';
 
 class App extends Component {
   state = {
@@ -25,12 +25,10 @@ class App extends Component {
   renderDash = role => {
     switch (role) {
       case "student":
-        return <Student />;
+        return <StudentDashboard />;
 
       case "company":
-        return <Company />;
-      case "admin":
-        return <Admin />;
+        return <CompanyDashboard />;
 
       default:
         return <Login />;
@@ -50,7 +48,6 @@ class App extends Component {
             handleLogin={this.handleLogin}
           />
         )}
-
       </div>
     );
   }

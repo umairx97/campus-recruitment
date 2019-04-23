@@ -11,13 +11,22 @@ const companySchema = mongoose.Schema({
   password: {
     type: String,
     required: false,
-    minlength: 4
+    minlength: 4,
+    trim: true
   },
 
-  "Company Name": {
+  companyName: {
     type: String,
     required: false,
-    maxlength: 100
+    maxlength: 100,
+    trim: true
+  },
+
+  ceo: {
+    type: String,
+    required: false,
+    maxlength: 15,
+    trim: true
   },
 
   role: {

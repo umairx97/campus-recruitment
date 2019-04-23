@@ -1,7 +1,14 @@
 const mongoose = require("mongoose");
 
 const jobSchema = mongoose.Schema({
-  title: {
+  ceo: {
+    type: String,
+    required: false,
+    trim: true,
+    maxlength: 15
+  },
+  
+  position: {
     type: String,
     required: false,
     trim: true
@@ -12,11 +19,17 @@ const jobSchema = mongoose.Schema({
     required: false
   },
 
-  "company name": {
+  companyName: {
     type: String,
     required: false,
     trim: true,
     maxlength: 20
+  },
+
+  salary: {
+    type: Number,
+    required: false,
+    trim: true
   },
 
   date: {
