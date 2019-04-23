@@ -127,6 +127,10 @@ app.post("/api/company/register", (req, res) => {
   });
 });
 
+// ==============================
+//           JOBS
+// ==============================
+
 // Get request for Jobs
 app.get("/api/company/jobs", (req, res) => {
   Jobs.find((err, doc) => {
@@ -152,6 +156,7 @@ app.post("/api/company/jobs", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3002;
+
 app.listen(PORT, () => {
   console.log("Server listening at " + PORT);
 });
