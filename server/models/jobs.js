@@ -8,7 +8,8 @@ const jobSchema = mongoose.Schema({
   },
 
   description: {
-    desc: String
+    type: String,
+    required: true
   },
 
   "company name": {

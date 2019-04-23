@@ -18,6 +18,11 @@ const companySchema = mongoose.Schema({
     type: String,
     required: true,
     maxlength: 100
+  },
+
+  role: {
+    type: String,
+    required: true
   }
 });
 

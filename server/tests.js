@@ -15,7 +15,8 @@ const baseUrl = "http://localhost:3002";
 //     name: "Umair",
 //     lastname: "Bajwa",
 //     email: "umair@umair.com",
-//     password: "123456"
+//     password: "123456",
+//     role: 'Student'
 //   })
 //   .then(res => {
 //     console.log(res.data);
@@ -37,7 +38,8 @@ const baseUrl = "http://localhost:3002";
 //     email: "admin@admin.com",
 //     password: "admin",
 //     name: "admin",
-//     lastname: "admin"
+//     lastname: "admin",
+//     role: "Admin"
 //   })
 //   .then(res => {
 //     console.log(res.data);
@@ -60,7 +62,8 @@ const baseUrl = "http://localhost:3002";
 //   .post(`${baseUrl}/api/company/register`, {
 //     email: "axiom@axiom.com",
 //     password: "1234560",
-//     "Company Name": "Panacloud"
+//     "Company Name": "Panacloud",
+//     role: "Company"
 //   })
 //   .then(res => console.log(res))
 //   .catch(err => console.log(err));
