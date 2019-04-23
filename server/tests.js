@@ -64,3 +64,23 @@ const baseUrl = "http://localhost:3002";
 //   })
 //   .then(res => console.log(res))
 //   .catch(err => console.log(err));
+
+// =======================================================
+
+// GET REQUEST FOR JOBS [WORKS]
+// axios.get(`${baseUrl}/api/company/jobs`).then(res => {
+//     console.log(res)
+// })
+
+// =======================================================
+
+// POST REQUEST FOR JOBS
+// axios
+//   .post(`${baseUrl}/api/company/jobs`, {
+//     title: "React Developer",
+//     description: "A job for react stack developer",
+//     "company name": "Panacloud",
+//     date: "23/04/2019"
+//   })
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err));

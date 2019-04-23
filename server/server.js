@@ -19,6 +19,7 @@ app.use(cors());
 const { Admin } = require("./models/admin");
 const { Student } = require("./models/student");
 const { Company } = require("./models/company");
+const { Jobs } = require("./models/jobs");
 
 // ==============================
 //           STUDENTS
@@ -38,6 +39,20 @@ app.get("/api/student/", (req, res) => {
 });
 
 // Post Student Data
+app.post("/api/student/register", (req, res) => {
+  const student = new Student(req.body);
+  student.save((err, doc) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({
+      success: true,
+      userData: doc
+    });
+  });
+});
+
+// Post request for student register
 app.post("/api/student/register", (req, res) => {
   const student = new Student(req.body);
   student.save((err, doc) => {
@@ -102,6 +117,30 @@ app.get("/api/company/", (req, res) => {
 app.post("/api/company/register", (req, res) => {
   const company = new Company(req.body);
   company.save((err, doc) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({
+      success: true,
+      userData: doc
+    });
+  });
+});
+
+// Get request for Jobs
+app.get("/api/company/jobs", (req, res) => {
+  Jobs.find((err, doc) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    res.status(200).json({ success: true, userData: doc });
+  });
+});
+
+// Post request for jobs
+app.post("/api/company/jobs", (req, res) => {
+  const jobs = new Jobs(req.body);
+  jobs.save((err, doc) => {
     if (err) {
       return res.json({ success: false, err });
     }
