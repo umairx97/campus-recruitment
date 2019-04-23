@@ -9,14 +9,17 @@ import {
   Icon
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class Register extends React.Component {
   state = {
+    companyName: "",
     username: "",
     email: "",
     password: "",
     passwordConfirmation: "",
-    errors: []
+    errors: [],
+    role: ""
   };
 
   isFormValid = () => {
@@ -62,11 +65,59 @@ class Register extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  postData = () => {
+    const { role, email, password, username, companyName } = this.state;
+
+    if (role === "student") {
+      axios
+        .post(`http://localhost:3002/api/student/register`, {
+          name: username,
+          email: email,
+          password: password,
+          role: "student"
+        })
+        .then(res => {
+          if (res.status === 200) {
+            alert("Thanks for registering you may now login");
+          } else {
+            alert("Something Wrong please try again later");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else if (role === "company") {
+      axios
+        .post(`http://localhost:3002/api/company/register`, {
+          name: username,
+          email: email,
+          password: password,
+          role: "company",
+          "Company Name": companyName
+        })
+        .then(res => {
+          if (res.status === 200) {
+            alert("Thanks for registering you may now login");
+          } else {
+            alert("Something Wrong please try again later");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
   handleSubmit = event => {
     if (this.isFormValid()) {
       event.preventDefault();
-      console.log("Form is submited");
+      this.postData();
     }
+  };
+
+  handleRole = event => {
+    this.setState({
+      role: event.target.value
+    });
   };
 
   render() {
@@ -75,7 +126,8 @@ class Register extends React.Component {
       email,
       password,
       passwordConfirmation,
-      errors
+      errors,
+      companyName
     } = this.state;
 
     return (
@@ -130,6 +182,37 @@ class Register extends React.Component {
                 value={passwordConfirmation}
                 type="password"
               />
+
+              {this.state.role === "company" ? (
+                <Form.Input
+                  fluid
+                  name="companyName"
+                  icon="copyright outline"
+                  iconPosition="left"
+                  placeholder="Company Name"
+                  onChange={this.handleChange}
+                  value={companyName}
+                  type="text"
+                />
+              ) : null}
+
+              <Form.Group inline>
+                <label>Student</label>
+                <input
+                  type="radio"
+                  value="student"
+                  checked={this.state.role === "student"}
+                  onChange={this.handleRole}
+                />
+
+                <label>Company</label>
+                <input
+                  type="radio"
+                  value="company"
+                  checked={this.state.role === "company"}
+                  onChange={this.handleRole}
+                />
+              </Form.Group>
 
               <Button color="orange" fluid size="large">
                 Submit
