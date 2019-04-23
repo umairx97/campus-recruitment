@@ -6,7 +6,8 @@ import {
   Button,
   Header,
   Message,
-  Icon
+  Icon,
+  Radio
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
@@ -28,33 +29,91 @@ class Login extends React.Component {
   };
 
   getData = () => {
-    axios
-      .get("http://localhost:3002/api/student")
-      .then(res => {
-        if (res.status === 200) {
-          const data = res.data.userData;
+    if (this.props.role === "student") {
+      axios
+        .get("http://localhost:3002/api/student")
+        .then(res => {
+          if (res.status === 200) {
+            const data = res.data.userData;
 
-          for (let i = 0; i < data.length; i++) {
-            if (
-              data[i].email === this.state.email &&
-              data[i].password === this.state.password
-            ) {
-              this.props.handleLogin();
-              break;
-            } else {
-              let error;
-              error = { message: "This user does not exist" };
-              this.setState({
-                errors: this.state.errors.concat(error)
-              });
-              break;
+            for (let i = 0; i < data.length; i++) {
+              if (
+                data[i].email === this.state.email &&
+                data[i].password === this.state.password &&
+                data[i].role === this.props.role
+              ) {
+                this.props.handleLogin();
+                this.setState({ errors: [] });
+              } else {
+                let error;
+                error = { message: "This user does not exist" };
+                this.setState({
+                  errors: this.state.errors.concat(error)
+                });
+              }
             }
           }
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else if (this.props.role === "company") {
+      axios
+        .get("http://localhost:3002/api/company")
+        .then(res => {
+          if (res.status === 200) {
+            const data = res.data.userData;
+
+            for (let i = 0; i < data.length; i++) {
+              if (
+                data[i].email === this.state.email &&
+                data[i].password === this.state.password &&
+                data[i].role === this.props.role
+              ) {
+                this.props.handleLogin();
+                this.setState({ errors: [] });
+              } else {
+                let error;
+                error = { message: "This user does not exist" };
+                this.setState({
+                  errors: this.state.errors.concat(error)
+                });
+              }
+            }
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .get("http://localhost:3002/api/admin")
+        .then(res => {
+          if (res.status === 200) {
+            const data = res.data.userData;
+
+            for (let i = 0; i < data.length; i++) {
+              if (
+                data[i].email === this.state.email &&
+                data[i].password === this.state.password &&
+                data[i].role === this.props.role
+              ) {
+                this.props.handleLogin();
+                this.setState({ errors: [] });
+              } else {
+                let error;
+                error = { message: "This user does not exist" };
+                this.setState({
+                  errors: this.state.errors.concat(error)
+                });
+              }
+            }
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
   handleSubmit = event => {
     event.preventDefault();
@@ -106,6 +165,32 @@ class Login extends React.Component {
                 className={this.handleInputError(errors, "password")}
                 type="password"
               />
+
+              <Form.Group inline>
+                <label>Student</label>
+                <input
+                  type="radio"
+                  value="student"
+                  checked={this.props.role === "student"}
+                  onChange={this.props.handleRole}
+                />
+
+                <label>Company</label>
+                <input
+                  type="radio"
+                  value="company"
+                  checked={this.props.role === "company"}
+                  onChange={this.props.handleRole}
+                />
+
+                <label>Admin</label>
+                <input
+                  type="radio"
+                  value="admin"
+                  checked={this.props.role === "admin"}
+                  onChange={this.props.handleRole}
+                />
+              </Form.Group>
 
               <Button
                 disabled={loading}

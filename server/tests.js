@@ -10,21 +10,21 @@ const baseUrl = "http://localhost:3002";
 // ====================================================
 
 // POST REQUEST FOR STUDENT DATA [WORKS]
-axios
-  .post(`${baseUrl}/api/student/register`, {
-    name: "Umair",
-    lastname: "Bajwa",
-    email: "umair@umair.com",
-    password: "123456",
-    role: 'Student',
-    appliedTo: ['Panacloud', 'Axiom'] 
-  })
-  .then(res => {
-    console.log(res.data);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// axios
+//   .post(`${baseUrl}/api/student/register`, {
+//     name: "Umair",
+//     lastname: "Bajwa",
+//     email: "umair@bajwa.com",
+//     password: "123456",
+//     role: "student",
+//     appliedTo: ["Panacloud", "Axiom"]
+//   })
+//   .then(res => {
+//     console.log(res.data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
 // =======================================================
 
@@ -40,7 +40,7 @@ axios
 //     password: "admin",
 //     name: "admin",
 //     lastname: "admin",
-//     role: "Admin"
+//     role: "admin"
 //   })
 //   .then(res => {
 //     console.log(res.data);
@@ -64,9 +64,9 @@ axios
 //     email: "axiom@axiom.com",
 //     password: "1234560",
 //     "Company Name": "Panacloud",
-//     role: "Company"
+//     role: "company"
 //   })
-//   .then(res => console.log(res))
+//   .then(res => console.log(res.data))
 //   .catch(err => console.log(err));
 
 // =======================================================
