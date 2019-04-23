@@ -52,19 +52,6 @@ app.post("/api/student/register", (req, res) => {
   });
 });
 
-// Post request for student register
-app.post("/api/student/register", (req, res) => {
-  const student = new Student(req.body);
-  student.save((err, doc) => {
-    if (err) {
-      return res.json({ success: false, err });
-    }
-    res.status(200).json({
-      success: true,
-      userData: doc
-    });
-  });
-});
 
 // ==============================
 //           ADMINS

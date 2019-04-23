@@ -10,20 +10,21 @@ const baseUrl = "http://localhost:3002";
 // ====================================================
 
 // POST REQUEST FOR STUDENT DATA [WORKS]
-// axios
-//   .post(`${baseUrl}/api/student/register`, {
-//     name: "Umair",
-//     lastname: "Bajwa",
-//     email: "umair@umair.com",
-//     password: "123456",
-//     role: 'Student'
-//   })
-//   .then(res => {
-//     console.log(res.data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+axios
+  .post(`${baseUrl}/api/student/register`, {
+    name: "Umair",
+    lastname: "Bajwa",
+    email: "umair@umair.com",
+    password: "123456",
+    role: 'Student',
+    appliedTo: ['Panacloud', 'Axiom'] 
+  })
+  .then(res => {
+    console.log(res.data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
 // =======================================================
 

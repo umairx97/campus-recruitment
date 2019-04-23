@@ -10,6 +10,8 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
+import axios from "axios";
+
 class Login extends React.Component {
   state = {
     email: "",
@@ -25,10 +27,39 @@ class Login extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  getData = () => {
+    axios
+      .get("http://localhost:3002/api/student")
+      .then(res => {
+        if (res.status === 200) {
+          const data = res.data.userData;
+
+          for (let i = 0; i < data.length; i++) {
+            if (
+              data[i].email === this.state.email &&
+              data[i].password === this.state.password
+            ) {
+              this.props.handleLogin();
+              break;
+            } else {
+              let error;
+              error = { message: "This user does not exist" };
+              this.setState({
+                errors: this.state.errors.concat(error)
+              });
+              break;
+            }
+          }
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   handleSubmit = event => {
     event.preventDefault();
     if (this.isFormValid(this.state)) {
-      console.log("Everything good");
+      this.getData();
     }
   };
 

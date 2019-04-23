@@ -27,8 +27,13 @@ const studentSchema = mongoose.Schema({
   },
 
   role: {
-    type: String, 
+    type: String,
     required: true
+  },
+
+  appliedTo: {
+    type: Object,
+    required: false
   }
 });
 
