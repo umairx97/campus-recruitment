@@ -1,23 +1,15 @@
 import React from "react";
-import {
-  Button,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Search,
-  Segment
-} from "semantic-ui-react";
+import { Button, Grid, Header, Icon, Segment } from "semantic-ui-react";
 
 import Companies from "../Student/Companies";
 import Jobs from "../Student/Jobs";
-import Students from '../Company/Students';
+import Students from "../Company/Students";
 
 class Admin extends React.Component {
   state = {
     jobs: [],
     companies: [],
-    screen: "jobs"
+    screen: "companies"
   };
 
   handleScreen = event => {
@@ -30,6 +22,10 @@ class Admin extends React.Component {
         return;
       case "jobs":
         this.setState({ screen: "jobs" });
+        return;
+      default:
+        this.setState({ screen: "companies" });
+        return;
     }
 
     // if (event.target.name === "jobs") {

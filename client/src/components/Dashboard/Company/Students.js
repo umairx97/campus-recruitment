@@ -40,11 +40,12 @@ class Students extends React.Component {
           </Table.Header>
 
           {data.map(item => (
-            <Table.Body>
+            <Table.Body key={item._id}>
               <Table.Row>
                 <Table.Cell>{item.name}</Table.Cell>
                 <Table.Cell>{item.lastname}</Table.Cell>
                 <Table.Cell>{item.email}</Table.Cell>
+                <Table.Cell>{item.appliedTo}</Table.Cell>
               </Table.Row>
             </Table.Body>
           ))}

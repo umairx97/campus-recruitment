@@ -1,6 +1,5 @@
 import React from "react";
 import { Table, Grid, Header } from "semantic-ui-react";
-import axios from "axios";
 
 class Applications extends React.Component {
   render() {

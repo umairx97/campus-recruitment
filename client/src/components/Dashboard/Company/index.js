@@ -5,7 +5,6 @@ import {
   Grid,
   Header,
   Icon,
-  Search,
   Segment
 } from "semantic-ui-react";
 
@@ -40,7 +39,7 @@ class Company extends React.Component {
             <Grid.Row verticalAlign="middle">
               <Grid.Column>
                 <Header icon>
-                  <Icon name="copyright outline" />
+                  <Icon name="student" />
                   Students
                 </Header>
                 <Button primary name="students" onClick={this.handleScreen}>

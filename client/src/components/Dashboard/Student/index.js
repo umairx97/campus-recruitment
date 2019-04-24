@@ -5,7 +5,6 @@ import {
   Grid,
   Header,
   Icon,
-  Search,
   Segment
 } from "semantic-ui-react";
 import Jobs from "./Jobs";

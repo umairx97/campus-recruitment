@@ -7,7 +7,6 @@ import {
   Header,
   Message,
   Icon,
-  Radio
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 

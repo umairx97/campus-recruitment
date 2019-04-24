@@ -113,7 +113,11 @@ class Register extends React.Component {
         })
         .then(res => {
           if (res.status === 200) {
-            alert("Thanks for registering you may now login");
+            swal(
+              "Great!",
+              "Thanks for registering you may now login ",
+              "success"
+            );
           } else {
             alert("Something Wrong please try again later");
           }
@@ -131,7 +135,11 @@ class Register extends React.Component {
         })
         .then(res => {
           if (res.status === 200) {
-            alert("Thanks for registering you may now login");
+            swal(
+              "Great!",
+              "Thanks for registering you may now login ",
+              "success"
+            );
           } else {
             alert("Something Wrong please try again later");
           }

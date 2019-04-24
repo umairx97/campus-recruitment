@@ -42,7 +42,7 @@ class Jobs extends React.Component {
           </Table.Header>
 
           {data.map(item => (
-            <Table.Body>
+            <Table.Body key = {item._id}>
               <Table.Row>
                 <Table.Cell>{item.ceo}</Table.Cell>
                 <Table.Cell>{item.companyName}</Table.Cell>
