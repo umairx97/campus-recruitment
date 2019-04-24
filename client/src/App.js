@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Login from "./components/Auth/Login";
 
 import StudentDashboard from "./components/Dashboard/Student/index";
-import CompanyDashboard from './components/Dashboard/Company/index';
-import AdminDashboard from './components/Dashboard/Admin/index';
+import CompanyDashboard from "./components/Dashboard/Company/index";
+import AdminDashboard from "./components/Dashboard/Admin/index";
 
 class App extends Component {
   state = {
@@ -26,13 +26,13 @@ class App extends Component {
   renderDash = role => {
     switch (role) {
       case "student":
-        return <StudentDashboard />;
+        return <StudentDashboard role={this.state.role} />;
 
       case "company":
-        return <CompanyDashboard />;
+        return <CompanyDashboard role={this.state.role} />;
 
-      case 'admin': 
-        return <AdminDashboard/>;
+      case "admin":
+        return <AdminDashboard role={this.state.role} />;
 
       default:
         return <Login />;

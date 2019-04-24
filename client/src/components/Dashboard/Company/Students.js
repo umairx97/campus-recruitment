@@ -1,6 +1,7 @@
 import React from "react";
 import { Table, Grid, Header } from "semantic-ui-react";
 import axios from "axios";
+import swal from "sweetalert";
 
 class Students extends React.Component {
   state = {
@@ -16,6 +17,17 @@ class Students extends React.Component {
       }
     });
   }
+
+  handleRemove = event => {
+    event.preventDefault();
+
+    if (this.props.role !== "admin") {
+      swal("Sorry", "You Are Not Authorized", "error");
+    } else {
+
+      swal("Great", "You Are Authorized", "success");
+    }
+  };
 
   render() {
     const { data } = this.state;
@@ -46,6 +58,15 @@ class Students extends React.Component {
                 <Table.Cell>{item.lastname}</Table.Cell>
                 <Table.Cell>{item.email}</Table.Cell>
                 <Table.Cell>{item.appliedTo}</Table.Cell>
+                {this.props.role !== 'admin' ? null : (
+                  <button
+                    type="submit"
+                    name={item.email}
+                    onClick={this.handleRemove}
+                  >
+                    Remove
+                  </button>
+                )}
               </Table.Row>
             </Table.Body>
           ))}

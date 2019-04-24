@@ -30,6 +30,7 @@ class Company extends React.Component {
     }
   };
   render() {
+    console.log(this.props.role)
     return (
       <div>
         <Segment placeholder>
@@ -64,7 +65,7 @@ class Company extends React.Component {
           <Grid textAlign="center" verticalAlign="middle" className="app">
             <Grid.Column>
               <Header as="h2" icon color="blue" textAlign="center">
-                <Students />
+                <Students role = {this.props.role} />
               </Header>
             </Grid.Column>
           </Grid>

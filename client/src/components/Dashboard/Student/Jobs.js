@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Grid, Header } from "semantic-ui-react";
 import axios from "axios";
-
+import swal from 'sweetalert'
 class Jobs extends React.Component {
   state = {
     data: []
@@ -16,6 +16,16 @@ class Jobs extends React.Component {
       }
     });
   }
+
+  handleRemove = event => {
+    event.preventDefault();
+
+    if (this.props.role !== "admin") {
+      swal("Sorry", "You Are Not Authorized", "error");
+    } else {
+      swal("Great", "You Are Authorized", "success");
+    }
+  };
 
   render() {
     const { data } = this.state;
@@ -42,7 +52,7 @@ class Jobs extends React.Component {
           </Table.Header>
 
           {data.map(item => (
-            <Table.Body key = {item._id}>
+            <Table.Body key={item._id}>
               <Table.Row>
                 <Table.Cell>{item.ceo}</Table.Cell>
                 <Table.Cell>{item.companyName}</Table.Cell>
@@ -51,6 +61,16 @@ class Jobs extends React.Component {
                 <Table.Cell>{item.salary}</Table.Cell>
                 <Table.Cell>{item.date}</Table.Cell>
               </Table.Row>
+
+              {this.props.role !== "admin" ? null : (
+                <button
+                  type="submit"
+                  name={item.email}
+                  onClick={this.handleRemove}
+                >
+                  Remove
+                </button>
+              )}
             </Table.Body>
           ))}
         </Table>
