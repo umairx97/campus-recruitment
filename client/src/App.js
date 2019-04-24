@@ -3,6 +3,7 @@ import Login from "./components/Auth/Login";
 
 import StudentDashboard from "./components/Dashboard/Student/index";
 import CompanyDashboard from './components/Dashboard/Company/index';
+import AdminDashboard from './components/Dashboard/Admin/index';
 
 class App extends Component {
   state = {
@@ -29,6 +30,9 @@ class App extends Component {
 
       case "company":
         return <CompanyDashboard />;
+
+      case 'admin': 
+        return <AdminDashboard/>;
 
       default:
         return <Login />;

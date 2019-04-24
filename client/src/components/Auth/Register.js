@@ -10,11 +10,13 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import swal from "sweetalert";
 
 class Register extends React.Component {
   state = {
     companyName: "",
     username: "",
+    lastname: "",
     email: "",
     password: "",
     passwordConfirmation: "",
@@ -66,19 +68,33 @@ class Register extends React.Component {
   };
 
   postData = () => {
-    const { role, email, password, username, companyName } = this.state;
+    const {
+      role,
+      email,
+      password,
+      username,
+      companyName,
+      lastname
+    } = this.state;
 
     if (role === "student") {
       axios
         .post(`http://localhost:3002/api/student/register`, {
           name: username,
+          lastname: lastname,
           email: email,
           password: password,
           role: "student"
         })
         .then(res => {
           if (res.status === 200) {
-            alert("Thanks for registering you may now login");
+            // alert("Thanks for registering you may now login");
+
+            swal(
+              "Great!",
+              "Thanks for registering you may now login ",
+              "success"
+            );
           } else {
             alert("Something Wrong please try again later");
           }
@@ -111,7 +127,7 @@ class Register extends React.Component {
           name: username,
           email: email,
           password: password,
-          role: "admin",
+          role: "admin"
         })
         .then(res => {
           if (res.status === 200) {
@@ -123,7 +139,7 @@ class Register extends React.Component {
         .catch(err => {
           console.log(err);
         });
-    } 
+    }
   };
   handleSubmit = event => {
     if (this.isFormValid()) {
@@ -145,7 +161,8 @@ class Register extends React.Component {
       password,
       passwordConfirmation,
       errors,
-      companyName
+      companyName,
+      lastname
     } = this.state;
 
     return (
@@ -165,6 +182,17 @@ class Register extends React.Component {
                 placeholder="Username"
                 onChange={this.handleChange}
                 value={username}
+                type="text"
+              />
+
+              <Form.Input
+                fluid
+                name="lastname"
+                icon="user"
+                iconPosition="left"
+                placeholder="Last Name"
+                onChange={this.handleChange}
+                value={lastname}
                 type="text"
               />
 
@@ -230,7 +258,6 @@ class Register extends React.Component {
                   checked={this.state.role === "company"}
                   onChange={this.handleRole}
                 />
-
 
                 <label>Admin</label>
                 <input
