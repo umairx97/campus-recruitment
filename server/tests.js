@@ -12,12 +12,12 @@ const baseUrl = "http://localhost:3002";
 // POST REQUEST FOR STUDENT DATA [WORKS]
 // axios
 //   .post(`${baseUrl}/api/student/register`, {
-//     name: "Umair",
-//     lastname: "Bajwa",
-//     email: "umair@bajwa.com",
+//     name: "Irfan",
+//     lastname: "Ali",
+//     email: "irfan@ali.com",
 //     password: "123456",
 //     role: "student",
-//     appliedTo: ["Panacloud", "Axiom"]
+//     appliedTo: ''
 //   })
 //   .then(res => {
 //     console.log(res.data);
@@ -25,6 +25,47 @@ const baseUrl = "http://localhost:3002";
 //   .catch(err => {
 //     console.log(err);
 //   });
+
+
+//   axios
+//   .post(`${baseUrl}/api/student/register`, {
+//     name: "Muneeb",
+//     lastname: "Khan",
+//     email: "muneeb@axiom.com",
+//     password: "123456",
+//     role: "student",
+//     appliedTo: ''
+//   })
+//   .then(res => {
+//     console.log(res.data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+
+//   axios
+//   .post(`${baseUrl}/api/student/register`, {
+//     name: "Umair",
+//     lastname: "Bajwa",
+//     email: "umair@bajwa.com",
+//     password: "123456",
+//     role: "student",
+//     appliedTo: ''
+//   })
+//   .then(res => {
+//     console.log(res.data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+
+// =======================================================
+
+// DELETE REQUEST FOR STUDENT
+// axios
+//   .delete(`${baseUrl}/api/student`, {data: {email: "irfan@axiom.com"}})
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err));
 
 // =======================================================
 
@@ -61,11 +102,11 @@ const baseUrl = "http://localhost:3002";
 // POST REQUEST FOR COMPANIES [WORKS]
 // axios
 //   .post(`${baseUrl}/api/company/register`, {
-//     email: "axiom@axiom.com",
-//     password: "1234560",
-//     companyName: "Axiom",
+//     email: "zia@panacloud.com",
+//     password: "123456",
+//     companyName: "Panacloud",
 //     role: "company",
-//     ceo: "Sir Adil Altaf"
+//     ceo: "Sir Zia Khan"
 //   })
 //   .then(res => console.log(res.data))
 //   .catch(err => console.log(err));
@@ -80,14 +121,14 @@ const baseUrl = "http://localhost:3002";
 // =======================================================
 
 // POST REQUEST FOR JOBS
-// axios
-//   .post(`${baseUrl}/api/company/jobs`, {
-//     ceo: 'Umair',
-//     position: "React Developer",
-//     description: "A job for React Stack developer",
-//     companyName: "Panacloud",
-//     salary: 10000,
-//     date: "23/04/2019"
-//   })
-//   .then(res => console.log(res))
-//   .catch(err => console.log(err));
+axios
+  .post(`${baseUrl}/api/company/jobs`, {
+    ceo: 'Umair',
+    position: "React Developer",
+    description: "A job for React Stack developer",
+    companyName: "Panacloud",
+    salary: 10000,
+    date: "23/04/2019"
+  })
+  .then(res => console.log(res))
+  .catch(err => console.log(err));

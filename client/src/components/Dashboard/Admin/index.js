@@ -9,7 +9,7 @@ class Admin extends React.Component {
   state = {
     jobs: [],
     companies: [],
-    screen: "companies"
+    screen: "students"
   };
 
   handleScreen = event => {
@@ -24,19 +24,9 @@ class Admin extends React.Component {
         this.setState({ screen: "jobs" });
         return;
       default:
-        this.setState({ screen: "companies" });
+        this.setState({ screen: "students" });
         return;
     }
-
-    // if (event.target.name === "jobs") {
-    //   this.setState({
-    //     screen: "jobs"
-    //   });
-    // } else {
-    //   this.setState({
-    //     screen: "companies"
-    //   });
-    // }
   };
 
   renderScreen = screen => {

@@ -10,6 +10,7 @@ import {
 
 import Students from "./Students";
 import Applications from "./Applications";
+import Post from "./Post";
 
 class Company extends React.Component {
   state = {
@@ -23,14 +24,56 @@ class Company extends React.Component {
       this.setState({
         screen: "applications"
       });
-    } else {
+    } else if (event.target.name === "students") {
       this.setState({
         screen: "students"
       });
+    } else {
+      this.setState({
+        screen: "post"
+      });
+    }
+  };
+
+  renderScreen = screen => {
+    switch (screen) {
+      case "students":
+        return (
+          <Grid textAlign="center" verticalAlign="middle" className="app">
+            <Grid.Column>
+              <Header as="h2" icon color="blue" textAlign="center">
+                <Students role={this.props.role} />
+              </Header>
+            </Grid.Column>
+          </Grid>
+        );
+
+      case "applications":
+        return (
+          <Grid textAlign="center" verticalAlign="middle" className="app">
+            <Grid.Column>
+              <Header as="h2" icon color="blue" textAlign="center">
+                <Applications />
+              </Header>
+            </Grid.Column>
+          </Grid>
+        );
+
+      case "post":
+        return (
+          <Grid textAlign="center" verticalAlign="middle" className="app">
+            <Grid.Column>
+              <Post role={this.props.role} />
+            </Grid.Column>
+          </Grid>
+        );
+
+      default:
+        this.setState({ screen: "students" });
     }
   };
   render() {
-    console.log(this.props.role)
+    console.log(this.props.role);
     return (
       <div>
         <Segment placeholder>
@@ -61,23 +104,21 @@ class Company extends React.Component {
           </Grid>
         </Segment>
 
-        {this.state.screen === "students" ? (
-          <Grid textAlign="center" verticalAlign="middle" className="app">
-            <Grid.Column>
-              <Header as="h2" icon color="blue" textAlign="center">
-                <Students role = {this.props.role} />
-              </Header>
-            </Grid.Column>
-          </Grid>
-        ) : (
-          <Grid textAlign="center" verticalAlign="middle" className="app">
-            <Grid.Column>
-              <Header as="h2" icon color="blue" textAlign="center">
-                <Applications />
-              </Header>
-            </Grid.Column>
-          </Grid>
+        {this.state.screen === "post" ? null : (
+          <Button
+            color="green"
+            animated
+            name="post"
+            onClick={this.handleScreen}
+          >
+            <Button.Content visible>Post A job</Button.Content>
+            <Button.Content hidden>
+              <Icon name="arrow right" />
+            </Button.Content>
+          </Button>
         )}
+
+        {this.renderScreen(this.state.screen)}
       </div>
     );
   }

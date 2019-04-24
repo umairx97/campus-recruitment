@@ -72,7 +72,6 @@ class Student extends React.Component {
             <Grid.Column>
               <Header as="h2" icon color="blue" textAlign="center">
                 <Jobs />
-                
               </Header>
             </Grid.Column>
           </Grid>

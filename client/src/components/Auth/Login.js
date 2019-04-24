@@ -6,7 +6,7 @@ import {
   Button,
   Header,
   Message,
-  Icon,
+  Icon
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
@@ -133,10 +133,15 @@ class Login extends React.Component {
     const { email, password, errors, loading } = this.state;
 
     return (
-      <Grid textAlign="center" verticalAlign="middle" className="app">
+      <Grid
+        textAlign="center"
+        verticalAlign="middle"
+        className="app"
+        style={{ height: "100vh" }}
+      >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h1" icon color="violet" textAlign="center">
-            <Icon name="code branch" color="violet" />
+            <Icon name="privacy" color="violet" />
             Login
           </Header>
           <Form onSubmit={this.handleSubmit} size="large">

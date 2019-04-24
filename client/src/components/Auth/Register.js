@@ -88,7 +88,6 @@ class Register extends React.Component {
         })
         .then(res => {
           if (res.status === 200) {
-            // alert("Thanks for registering you may now login");
 
             swal(
               "Great!",
@@ -174,10 +173,10 @@ class Register extends React.Component {
     } = this.state;
 
     return (
-      <Grid textAlign="center" verticalAlign="middle" className="app">
+      <Grid textAlign="center" verticalAlign="middle" className="app" style={{ height: "100vh" }}>
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" icon color="orange" textAlign="center">
-            <Icon name="puzzle piece" color="orange" />
+            <Icon name="user circle" color="orange" />
             Register
           </Header>
           <Form onSubmit={this.handleSubmit} size="large">

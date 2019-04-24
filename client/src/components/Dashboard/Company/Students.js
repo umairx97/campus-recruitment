@@ -24,8 +24,23 @@ class Students extends React.Component {
     if (this.props.role !== "admin") {
       swal("Sorry", "You Are Not Authorized", "error");
     } else {
-
-      swal("Great", "You Are Authorized", "success");
+      axios
+        .delete(`http://localhost:3002/api/student`, {
+          data: { email: event.target.name }
+        })
+        .then(res => {
+          if (res.status === 200) {
+            axios.get("http://localhost:3002/api/student/").then(res => {
+              if (res.status === 200) {
+                const userData = res.data.userData;
+                this.setState({
+                  data: userData
+                });
+              }
+            });
+          }
+        })
+        .catch(err => console.log(err));
     }
   };
 
@@ -58,7 +73,7 @@ class Students extends React.Component {
                 <Table.Cell>{item.lastname}</Table.Cell>
                 <Table.Cell>{item.email}</Table.Cell>
                 <Table.Cell>{item.appliedTo}</Table.Cell>
-                {this.props.role !== 'admin' ? null : (
+                {this.props.role !== "admin" ? null : (
                   <button
                     type="submit"
                     name={item.email}

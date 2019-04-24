@@ -1,7 +1,48 @@
 import React from "react";
 import { Table, Grid, Header } from "semantic-ui-react";
-
+import swal from "sweetalert";
+import axios from "axios";
 class Applications extends React.Component {
+  state = {
+    data: []
+  };
+  componentDidMount() {
+    axios.get("http://localhost:3002/api/student/").then(res => {
+      if (res.status === 200) {
+        const userData = res.data.userData;
+        this.setState({
+          data: userData
+        });
+      }
+    });
+  }
+
+  handleRemove = event => {
+    event.preventDefault();
+
+    if (this.props.role !== "admin") {
+      swal("Sorry", "You Are Not Authorized", "error");
+    } else {
+      axios
+        .delete(`http://localhost:3002/api/student`, {
+          data: { email: event.target.name }
+        })
+        .then(res => {
+          if (res.status === 200) {
+            axios.get("http://localhost:3002/api/student/").then(res => {
+              if (res.status === 200) {
+                const userData = res.data.userData;
+                this.setState({
+                  data: userData
+                });
+              }
+            });
+          }
+        })
+        .catch(err => console.log(err));
+    }
+  };
+
   render() {
     return (
       <div>
@@ -23,18 +64,25 @@ class Applications extends React.Component {
             </Table.Row>
           </Table.Header>
 
-          {/* {data.map(item => (
-            <Table.Body>
+          {this.state.data.map(item => (
+            <Table.Body key={item._id}>
               <Table.Row>
-                <Table.Cell>{item.ceo}</Table.Cell>
-                <Table.Cell>{item.companyName}</Table.Cell>
-                <Table.Cell>{item.position}</Table.Cell>
-                <Table.Cell>{item.description}</Table.Cell>
-                <Table.Cell>{item.salary}</Table.Cell>
-                <Table.Cell>{item.date}</Table.Cell>
+                <Table.Cell>{item.name}</Table.Cell>
+                <Table.Cell>{item.lastname}</Table.Cell>
+                <Table.Cell>{item.email}</Table.Cell>
+                <Table.Cell>{item.appliedTo}</Table.Cell>
+                {this.props.role !== "admin" ? null : (
+                  <button
+                    type="submit"
+                    name={item.email}
+                    onClick={this.handleRemove}
+                  >
+                    Remove
+                  </button>
+                )}
               </Table.Row>
             </Table.Body>
-          ))} */}
+          ))}
         </Table>
       </div>
     );

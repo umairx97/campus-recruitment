@@ -23,7 +23,23 @@ class Companies extends React.Component {
     if (this.props.role !== "admin") {
       swal("Sorry", "You Are Not Authorized", "error");
     } else {
-      swal("Great", "You Are Authorized", "success");
+      axios
+        .delete(`http://localhost:3002/api/company`, {
+          data: { email: event.target.name }
+        })
+        .then(res => {
+          if (res.status === 200) {
+            axios.get("http://localhost:3002/api/company/").then(res => {
+              if (res.status === 200) {
+                const userData = res.data.userData;
+                this.setState({
+                  data: userData
+                });
+              }
+            });
+          }
+        })
+        .catch(err => console.log(err));
     }
   };
 

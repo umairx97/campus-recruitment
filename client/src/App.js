@@ -4,6 +4,7 @@ import Login from "./components/Auth/Login";
 import StudentDashboard from "./components/Dashboard/Student/index";
 import CompanyDashboard from "./components/Dashboard/Company/index";
 import AdminDashboard from "./components/Dashboard/Admin/index";
+// import './app.css'
 
 class App extends Component {
   state = {

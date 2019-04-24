@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Grid, Header } from "semantic-ui-react";
 import axios from "axios";
-import swal from 'sweetalert'
+import swal from "sweetalert";
 class Jobs extends React.Component {
   state = {
     data: []
@@ -23,7 +23,23 @@ class Jobs extends React.Component {
     if (this.props.role !== "admin") {
       swal("Sorry", "You Are Not Authorized", "error");
     } else {
-      swal("Great", "You Are Authorized", "success");
+      axios
+        .delete(`http://localhost:3002/api/company/jobs`, {
+          data: { companyName: event.target.name }
+        })
+        .then(res => {
+          if (res.status === 200) {
+            axios.get("http://localhost:3002/api/company/jobs").then(res => {
+              if (res.status === 200) {
+                const userData = res.data.userData;
+                this.setState({
+                  data: userData
+                });
+              }
+            });
+          }
+        })
+        .catch(err => console.log(err));
     }
   };
 
@@ -65,7 +81,7 @@ class Jobs extends React.Component {
               {this.props.role !== "admin" ? null : (
                 <button
                   type="submit"
-                  name={item.email}
+                  name={item.companyName}
                   onClick={this.handleRemove}
                 >
                   Remove
