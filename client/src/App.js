@@ -42,8 +42,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* {this.state.loggedIn && this.state.role === 'student' ? <Student></Student> : <Login> } */}
-
         {this.state.loggedIn && this.state.role.length > 0 ? (
           this.renderDash(this.state.role)
         ) : (

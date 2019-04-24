@@ -36,9 +36,7 @@ class Admin extends React.Component {
           <div>
             <Grid textAlign="center" verticalAlign="middle" className="app">
               <Grid.Column>
-                <Header as="h2" icon color="blue" textAlign="center">
                   <Companies role = {this.props.role}/>
-                </Header>
               </Grid.Column>
             </Grid>
           </div>
@@ -48,9 +46,7 @@ class Admin extends React.Component {
         return (
           <Grid textAlign="center" verticalAlign="middle" className="app">
             <Grid.Column>
-              <Header as="h2" icon color="blue" textAlign="center">
                 <Jobs role = {this.props.role} />
-              </Header>
             </Grid.Column>
           </Grid>
         );
@@ -59,9 +55,7 @@ class Admin extends React.Component {
         return (
           <Grid textAlign="center" verticalAlign="middle" className="app">
             <Grid.Column>
-              <Header as="h2" icon color="blue" textAlign="center">
                 <Students  role = {this.props.role}/>
-              </Header>
             </Grid.Column>
           </Grid>
         );

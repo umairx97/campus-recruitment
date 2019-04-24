@@ -1,10 +1,11 @@
 import React from "react";
-import { Table, Grid, Header } from "semantic-ui-react";
+import { Table, Grid, Header, Button, Icon } from "semantic-ui-react";
 import axios from "axios";
 import swal from "sweetalert";
 class Jobs extends React.Component {
   state = {
-    data: []
+    data: [],
+    applied: false
   };
   componentDidMount() {
     axios.get("http://localhost:3002/api/company/jobs").then(res => {
@@ -43,8 +44,18 @@ class Jobs extends React.Component {
     }
   };
 
+  handleApply = event => {
+    event.preventDefault();
+
+    swal("Great", "You Have Applied", "success");
+    this.setState({
+      applied: true
+    });
+  };
+
   render() {
     const { data } = this.state;
+    const { role } = this.props;
     return (
       <div>
         <Grid textAlign="center" verticalAlign="middle" className="app">
@@ -76,6 +87,20 @@ class Jobs extends React.Component {
                 <Table.Cell>{item.description}</Table.Cell>
                 <Table.Cell>{item.salary}</Table.Cell>
                 <Table.Cell>{item.date}</Table.Cell>
+                {role === "student" ? (
+                  <Button
+                    color="green"
+                    animated
+                    name={item.position}
+                    onClick={this.handleApply}
+                    disabled={this.state.applied}
+                  >
+                    <Button.Content visible>Apply</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name="arrow right" />
+                    </Button.Content>
+                  </Button>
+                ) : null}
               </Table.Row>
 
               {this.props.role !== "admin" ? null : (

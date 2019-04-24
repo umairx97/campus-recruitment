@@ -100,16 +100,16 @@ const baseUrl = "http://localhost:3002";
 // =======================================================
 
 // POST REQUEST FOR COMPANIES [WORKS]
-// axios
-//   .post(`${baseUrl}/api/company/register`, {
-//     email: "zia@panacloud.com",
-//     password: "123456",
-//     companyName: "Panacloud",
-//     role: "company",
-//     ceo: "Sir Zia Khan"
-//   })
-//   .then(res => console.log(res.data))
-//   .catch(err => console.log(err));
+axios
+  .post(`${baseUrl}/api/company/register`, {
+    email: "zia@panacloud.com",
+    password: "123456",
+    companyName: "Panacloud",
+    role: "company",
+    ceo: "Sir Zia Khan"
+  })
+  .then(res => console.log(res.data))
+  .catch(err => console.log(err));
 
 // =======================================================
 
@@ -121,14 +121,14 @@ const baseUrl = "http://localhost:3002";
 // =======================================================
 
 // POST REQUEST FOR JOBS
-axios
-  .post(`${baseUrl}/api/company/jobs`, {
-    ceo: 'Umair',
-    position: "React Developer",
-    description: "A job for React Stack developer",
-    companyName: "Panacloud",
-    salary: 10000,
-    date: "23/04/2019"
-  })
-  .then(res => console.log(res))
-  .catch(err => console.log(err));
+// axios
+//   .post(`${baseUrl}/api/company/jobs`, {
+//     ceo: 'Umair',
+//     position: "React Developer",
+//     description: "A job for React Stack developer",
+//     companyName: "Panacloud",
+//     salary: 10000,
+//     date: "23/04/2019"
+//   })
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err));

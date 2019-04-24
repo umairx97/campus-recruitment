@@ -41,9 +41,7 @@ class Company extends React.Component {
         return (
           <Grid textAlign="center" verticalAlign="middle" className="app">
             <Grid.Column>
-              <Header as="h2" icon color="blue" textAlign="center">
                 <Students role={this.props.role} />
-              </Header>
             </Grid.Column>
           </Grid>
         );
@@ -52,9 +50,7 @@ class Company extends React.Component {
         return (
           <Grid textAlign="center" verticalAlign="middle" className="app">
             <Grid.Column>
-              <Header as="h2" icon color="blue" textAlign="center">
                 <Applications />
-              </Header>
             </Grid.Column>
           </Grid>
         );

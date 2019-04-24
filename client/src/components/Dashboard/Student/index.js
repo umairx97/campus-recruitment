@@ -28,6 +28,7 @@ class Student extends React.Component {
       });
     }
   };
+
   render() {
     return (
       <div>
@@ -62,17 +63,13 @@ class Student extends React.Component {
         {this.state.screen === "companies" ? (
           <Grid textAlign="center" verticalAlign="middle" className="app">
             <Grid.Column>
-              <Header as="h2" icon color="blue" textAlign="center">
-                <Companies />
-              </Header>
+              <Companies />
             </Grid.Column>
           </Grid>
         ) : (
           <Grid textAlign="center" verticalAlign="middle" className="app">
             <Grid.Column>
-              <Header as="h2" icon color="blue" textAlign="center">
-                <Jobs />
-              </Header>
+              <Jobs role={this.props.role} />
             </Grid.Column>
           </Grid>
         )}
