@@ -62,10 +62,10 @@ const baseUrl = "http://localhost:3002";
 // =======================================================
 
 // DELETE REQUEST FOR STUDENT
-axios
-  .delete(`${baseUrl}/api/student`, {data: {email: "irfan@axiom.com"}})
-  .then(res => console.log(res))
-  .catch(err => console.log(err));
+// axios
+//   .delete(`${baseUrl}/api/student`, {data: {email: "irfan@axiom.com"}})
+//   .then(res => console.log(res))
+//   .catch(err => console.log(err));
 
 // =======================================================
 
@@ -100,16 +100,16 @@ axios
 // =======================================================
 
 // POST REQUEST FOR COMPANIES [WORKS]
-axios
-  .post(`${baseUrl}/api/company/register`, {
-    email: "zia@panacloud.com",
-    password: "123456",
-    companyName: "Panacloud",
-    role: "company",
-    ceo: "Sir Zia Khan"
-  })
-  .then(res => console.log(res.data))
-  .catch(err => console.log(err));
+// axios
+//   .post(`${baseUrl}/api/company/register`, {
+//     email: "zia@panacloud.com",
+//     password: "123456",
+//     companyName: "Panacloud",
+//     role: "company",
+//     ceo: "Sir Zia Khan"
+//   })
+//   .then(res => console.log(res.data))
+//   .catch(err => console.log(err));
 
 // =======================================================
 
