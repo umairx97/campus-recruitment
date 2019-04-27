@@ -62,10 +62,10 @@ const baseUrl = "http://localhost:3002";
 // =======================================================
 
 // DELETE REQUEST FOR STUDENT
-// axios
-//   .delete(`${baseUrl}/api/student`, {data: {email: "irfan@axiom.com"}})
-//   .then(res => console.log(res))
-//   .catch(err => console.log(err));
+axios
+  .delete(`${baseUrl}/api/student`, {data: {email: "irfan@axiom.com"}})
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
 
 // =======================================================
 

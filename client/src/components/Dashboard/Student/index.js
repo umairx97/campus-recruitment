@@ -30,6 +30,7 @@ class Student extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <Segment placeholder>

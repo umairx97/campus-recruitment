@@ -127,7 +127,6 @@ app.post("/api/company/register", (req, res) => {
   });
 });
 
-
 app.delete("/api/company", (req, res) => {
   const data = req.body;
   Company.remove(data, (err, doc) => {
@@ -169,7 +168,6 @@ app.post("/api/company/jobs", (req, res) => {
     });
   });
 });
-
 
 app.delete("/api/company/jobs", (req, res) => {
   const data = req.body;
